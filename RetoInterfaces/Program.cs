@@ -1,17 +1,14 @@
 ﻿using RetoInterfaces;
 
 Console.WriteLine("=== Reto interfaces: reproductor de música ===");
-MusicPlayer player = new();
-Console.WriteLine($"Pista inicial: {player.GetCurrentTrack()}");
-player.Play();
-player.LoadTrack("Imagine Dragons - Believer");
-player.Play();
+IMediaPlayer player = new MusicPlayer();
 Console.WriteLine($"Pista actual: {player.GetCurrentTrack()}");
+((MusicPlayer)player).LoadTrack("Imagine Dragons - Believer");
+player.Play();
 player.Pause();
 player.Play();
 player.Stop();
-player.LoadTrack("Vivaldi - Primavera");
+Console.WriteLine($"Pista actual después de detener: {player.GetCurrentTrack()}");
+((MusicPlayer)player).LoadTrack("Vivaldi - Primavera");
 player.Play();
 player.Stop();
-Console.WriteLine($"Pista final: {player.GetCurrentTrack()}");
-
